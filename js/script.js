@@ -20,6 +20,11 @@ let pokemonList = [
   }
 ];
 
+pokemonList.forEach(function(pokemon) {
+  console.log(pokemon.name + ' height: ' + pokemon.height + ' weight: ' + pokemon.weight + ' ' + pokemon.types );
+    document.write('<p>' + pokemon.name + ' height: '  + pokemon.height + ' weight: ' + pokemon.weight + ' ' + pokemon.types + '</p>')
+})
+
 /*
 for (let i = 0; i <= 2; i++) {
   document.write('The Pokemon Name is: ');
@@ -36,7 +41,3 @@ for (let i = 0; i <= 2; i++) {
   document.write("<br>");
 }
 */
-function myLoopFunction(pokemon) {
-  console.log(pokemon.name + ', ' + pokemon.height + 'in, ' + pokemon.weight + 'oz, ' + pokemon.types);
-}
-pokemonList.forEach(myLoopFunction);
