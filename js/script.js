@@ -1,3 +1,4 @@
+let pokemonRepository = (function () {
 let pokemonList = [
   { name: 'Growlithe',
     height: .7,
@@ -19,6 +20,23 @@ let pokemonList = [
     types: 'bug'
   }
 ];
+
+function add(pokemon) {
+  pokemonList.push(pokemon);
+}
+
+function getAll() {
+    return pokemonList;
+  }
+
+  return {
+    add: add,
+    getAll: getAll
+  };
+
+})()
+
+let pokemonList = pokemonRepository.getAll();
 
 pokemonList.forEach(function(pokemon) {
   console.log(pokemon.name + ' height: ' + pokemon.height + ' weight: ' + pokemon.weight + ' ' + pokemon.types );
