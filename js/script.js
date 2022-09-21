@@ -21,41 +21,48 @@ let pokemonList = [
   }
 ];
 
+/*Add a single pokemon to the list*/
 function add(pokemon) {
   pokemonList.push(pokemon);
 }
 
+/*return the pokemon array*/
 function getAll() {
     return pokemonList;
   }
 
+/*Add single pokemon to ul as a button, assign name to button*/
+function addListItem(pokemon){
+    let pokemonList = document.querySelector(".pokemon-list");
+    let listpokemon = document.createElement("li");
+    let button = document.createElement("button");
+    button.innerText = pokemon.name;
+    button.classList.add("button-class");
+    listpokemon.appendChild(button);
+    pokemonList.appendChild(listpokemon);
+    button.addEventListener("click", ()=>{
+            showDetails(pokemon);
+    });
+  }
+
+function showDetails(pokemon){
+  console.log(pokemon);
+
+}
+
+
   return {
     add: add,
-    getAll: getAll
-  };
+    getAll: getAll,
+    addListItem: addListItem
+    };
 
-})()
+})();
 
-let pokemonList = pokemonRepository.getAll();
+pokemonRepository.add({ name: 'Pikachu', height: 0.3, weight: 13.2, types: 'electric'});
 
-pokemonList.forEach(function(pokemon) {
-  console.log(pokemon.name + ' height: ' + pokemon.height + ' weight: ' + pokemon.weight + ' ' + pokemon.types );
-    document.write('<p>' + pokemon.name + ' height: '  + pokemon.height + ' weight: ' + pokemon.weight + ' ' + pokemon.types + '</p>')
-})
+console.log(pokemonRepository.getAll());
 
-/*
-for (let i = 0; i <= 2; i++) {
-  document.write('The Pokemon Name is: ');
-  document.write(pokemonList[i].name);
-  document.write("<br>");
-  document.write('Height: ');
-  document.write(pokemonList[i].height);
-  document.write("<br>");
-  document.write('Weight: ');
-  document.write(pokemonList[i].weight);
-  document.write("<br>");
-  if (pokemonList[i].height > .5) {document.write('Wow, that is big');}
-  document.write("<br>");
-  document.write("<br>");
-}
-*/
+pokemonRepository.getAll().forEach(function (pokemon) {
+  pokemonRepository.addListItem(pokemon);
+});
